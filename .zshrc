@@ -94,6 +94,11 @@ rbenv() {
 ## export PATH="$HOME/.nodenv/bin:$PATH"
 ## eval "$(nodenv init -)"
 
+##################################
+#  Tensorflow
+function tensor_active(){
+  . ~/dev/venv/tensorflow_macos_venv/bin/activate
+}
 
 
 
