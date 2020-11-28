@@ -19,7 +19,7 @@
   ;; MacOSX setting
   ;;
   (create-fontset-from-ascii-font
-   "Menlo-14:weight=normal:slant=normal"
+   "Menlo-15:weight=normal:slant=normal"
    nil
    "menlokakugo")
 
@@ -64,6 +64,11 @@
 
 ;;;;;;;;;; Beep OFF
 (setq visible-bell t)
+
+;; テーマの設定
+;;; (load-theme 'deeper-blue t)
+;;; (load-theme 'manoj-dark t)
+(load-theme 'heroku t)
 
 ;;;;;;;;;;;;;; 見た目の設定
 (set-frame-parameter nil 'alpha 95)	;背景の透明度
@@ -127,9 +132,22 @@
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;;; Package setting
+;;; M-x package-list-packages
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+(require 'package)
+(add-to-list 'package-archives '("melpa" . "https://melpa.org/packages/"))
+(add-to-list 'package-archives '("melpa-stable" . "https://stable.melpa.org/packages/"))
+(add-to-list 'package-archives  '("marmalade" . "https://marmalade-repo.org/packages/"))
+(add-to-list 'package-archives '("org" . "http://orgmode.org/elpa/"))
+(package-initialize)
 
-
+;;;
+;;; magit setting 
+;;; Start: C-x g, Help: ?, Quit:q
+;;;
+;;;
+(require 'magit)
+(global-set-key (kbd "C-x g") 'magit-status)
 
 ;;;
 ;;; C-MODE Hoook
@@ -192,6 +210,9 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(column-number-mode t)
+ '(custom-safe-themes
+   '("928ed6d4997ec3cdce10b65c59d0f966a61792a69b84c47155cb5578ce2972be" "3987c0d4dd1c239b4151aa4b01d3a0f17d069146c6c71f5a4765e194916458a9" default))
+ '(package-selected-packages '(magit heroku-theme nova-theme))
  '(show-paren-mode t))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
