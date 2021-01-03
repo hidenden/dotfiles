@@ -14,6 +14,9 @@ export PATH="$HOME/bin:$PATH"
 ## export PATH="/usr/local/go/bin:$PATH"
 ## export PATH="$(go env GOPATH)/bin:$PATH"
 
+#### FPATH setting
+export FPATH="$HOME/.zsh:$FPATH"
+
 #### Environment
 export PAGER="less"
 export RSYNC_RSH=ssh
@@ -64,8 +67,6 @@ colors
 autoload -Uz compinit
 compinit
 
-
-
 #####################
 #  rbenv
 ######################################
@@ -73,20 +74,20 @@ compinit
 ## export RBENV_SHELL=zsh
 # source '/usr/local/Cellar/rbenv/1.1.1/libexec/../completions/rbenv.zsh'
 ## command rbenv rehash 2>/dev/null
-rbenv() {
-  local command
-  command="$1"
-  if [ "$#" -gt 0 ]; then
-    shift
-  fi
+# rbenv() {
+#   local command
+#   command="$1"
+#   if [ "$#" -gt 0 ]; then
+#     shift
+#   fi
 
-  case "$command" in
-  rehash|shell)
-    eval "$(rbenv "sh-$command" "$@")";;
-  *)
-    command rbenv "$command" "$@";;
-  esac
-}
+#   case "$command" in
+#   rehash|shell)
+#     eval "$(rbenv "sh-$command" "$@")";;
+#   *)
+#     command rbenv "$command" "$@";;
+#   esac
+# }
 ######################################
 
 ###########################
@@ -96,9 +97,20 @@ rbenv() {
 
 ##################################
 #  Tensorflow
-function tensor_active(){
-  . ~/dev/venv/tensorflow_macos_venv/bin/activate
-}
+autoload activate_tensor
 
+##################################
+#  Git
+# if [ -f ${HOME}/.zsh/git-completion.zsh ]; then
+#        zstyle ':completion:*:*:git:*' script ~/.zsh/git-completion.zsh
+# fi
+# if [ -f ${HOME}/.zsh/git-prompt.sh ]; then
+#        source ${HOME}/.zsh/git-prompt.sh
+# fi
+# GIT_PS1_SHOWDIRTYSTATE=true
+# GIT_PS1_SHOWUNTRACKEDFILES=true
+# GIT_PS1_SHOWSTASHSTATE=true
+# GIT_PS1_SHOWUPSTREAM=auto
+# setopt PROMPT_SUBST ; PS1='%n@%m %c$(__git_ps1 " (%s)")> '
 
 
