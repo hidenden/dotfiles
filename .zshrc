@@ -1,9 +1,5 @@
 bindkey -e
 
-#### golang environment
-## export GOPATH=$(go env GOPATH)
-## export GOROOT=$(go env GOROOT)
-
 #### PATH setting
 export PATH="$PATH:/usr/sbin:/sbin"
 export PATH="/usr/local/bin:$PATH"
@@ -11,8 +7,13 @@ export PATH="/usr/local/bin:$PATH"
 export PATH="$HOME/bin:$PATH"
 ## export PATH=$PATH:"/Users/hide/Library/Python/3.7/bin"
 ## export PATH="/Users/hide/Library/Python/3.7/bin:$PATH"
-## export PATH="/usr/local/go/bin:$PATH"
-## export PATH="$(go env GOPATH)/bin:$PATH"
+
+#### golang environment
+if [ -d /usr/local/go ] ; then
+    export PATH="/usr/local/go/bin:$PATH"
+    export GOPATH=$(go env GOPATH)
+    export GOROOT=$(go env GOROOT)
+fi
 
 #### FPATH setting
 export FPATH="$HOME/.zsh:$FPATH"
